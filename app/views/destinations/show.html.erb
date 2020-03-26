@@ -1,0 +1,19 @@
+<h1><%= @destination.name %> Show Page</h1>
+
+<h2>Destination posts</h2>
+
+<h3>5 most recent posts</h3>
+<% @destination.posts.last(5).each do |post| %>
+  <%= post.blogger.name %> - <%= post.title %><br>
+<% end %>
+
+<h3>Most popular post</h3>
+<% most_liked_post = @destination.posts.max_by do |post| %>
+  <% post.likes %>
+<% end %>
+
+<%= link_to most_liked_post.title, post_path(most_liked_post) if most_liked_post %>
+
+<h3>Average age of blogger</h3>
+
+<%= @destination.average_age %>
