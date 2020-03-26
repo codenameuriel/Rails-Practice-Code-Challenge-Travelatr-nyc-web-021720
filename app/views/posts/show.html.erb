@@ -1,17 +1,17 @@
 <h1><%= @post.title %></h1>
+<br>
 
-<h2>Content</h2><br>
-<%= @post.content.sub(''"[\"') %>
+<h3>Content</h3>
+<p><%= @post.content %></p>
+<br>
 
-<h3>Blogger's Page link</h3>
+<h3>Link to Blogger's Show Page</h3>
 <%= link_to @post.blogger.name, blogger_path(@post.blogger) %>
+<br><br>
 
-<h3>Destination Page link</h3>
+<h3>Link to Destination's Show Page</h3>
 <%= link_to @post.destination.name, destination_path(@post.destination) %>
+<br><br>
 
-<h3>Post likes</h3>
-<%= @post.likes %>
-
-<h3>Click the button to like the post</h3>
-<%# check 'rails routes' %>
-<%= button_to "Like", post_likes_path(@post), method: :put %>
+<h3>Smash the Like button to like the post</h3>
+<%= @post.likes %> <%= button_to "Like", @post, method: :patch %>

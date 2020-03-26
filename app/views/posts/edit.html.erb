@@ -15,6 +15,7 @@
   <%= f.text_area :content %><br>
 
   <%= f.label "Blogger:" %>
+  <%# take :id as value for :blogger_id key, but display :name values for selections %>
   <%= f.collection_select :blogger_id, Blogger.all, :id, :name %><br>
 
   <%= f.label "Destination:" %>

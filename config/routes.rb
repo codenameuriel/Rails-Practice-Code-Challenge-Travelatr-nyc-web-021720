@@ -1,11 +1,12 @@
 Rails.application.routes.draw do
   resources :bloggers, only: [:show, :new, :create]
   resources :destinations, only: [:show]
-  resources :posts, except: [:destroy, :index]
-  # resources :posts, to: :update_likes
+  resources :posts, except: [:index, :destroy]
 
+  # member route
   resources :posts do
-    put :likes #put HTTP route that updates
+    #creates a PATCH route (modifies specific attribute) for the likes action in posts controller
+    patch :likes, on: :member
+    # creates likes_post_path 
   end
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

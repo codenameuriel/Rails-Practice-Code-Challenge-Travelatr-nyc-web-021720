@@ -22,6 +22,7 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
   end
 
+  #  PATCH route
   def update
     @post = Post.find(params[:id])
 
@@ -32,12 +33,15 @@ class PostsController < ApplicationController
     end
   end
 
-  def likes #PUT route 
-    # byebug
-    @post = Post.find(params[:post_id])
+  # PATCH route
+  def likes
+    # can use params[:id] syntax to find targeted post object because 
+    # of the on: :member option in route definition
+    # without on: :member option, syntax would be params[:post_id]
+    @post = Post.find(params[:id])
 
-    @post.increment!(:likes) #increases integer attribute by 1 
-                             #! saves the changes for the redirect_to
+    @post.increment!(:likes) # increases an integer data type attribute by 1 
+                             # ! saves the changes for the redirect_to
 
     redirect_to @post
   end
